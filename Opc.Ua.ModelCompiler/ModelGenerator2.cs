@@ -3827,17 +3827,6 @@ namespace ModelCompiler
 
             DataTypeDesign dataType = field.Parent as DataTypeDesign;
 
-            if (context.Index == 0)
-            {
-                if (dataType != null 
-                    && dataType.BaseType != new XmlQualifiedName("Structure", DefaultNamespace)
-                    && dataType.BaseType != new XmlQualifiedName("Union", DefaultNamespace))
-                {
-                    template.WriteNextLine(context.Prefix);
-                    template.Write("if (!base.IsEqual(encodeable)) return false;");
-                }
-            }
-
             template.WriteNextLine(context.Prefix);
 
             if (dataType.IsUnion)
